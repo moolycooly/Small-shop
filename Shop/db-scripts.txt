@@ -1,0 +1,53 @@
+drop table if exists shoppers;
+
+create table shoppers (
+	id bigserial primary key,
+	name varchar(255) 
+); 
+drop table if exists products;
+
+create table products (
+	id bigserial primary key, 
+	name varchar(255), 
+	price bigint
+); 
+drop table if exists shoppers_products;
+
+create table shoppers_products (
+	shopper_id bigint, 
+	product_id bigint, 
+	foreign key(shopper_id) references shoppers(id), 
+	foreign key(product_id) references products(id)
+);
+insert into shoppers (name) values 
+	('Dale Young'),
+	('Gary Harris'),
+	('Philip Bryant'),
+	('Daniel Dunn'),
+	('Stephen Smith')
+;
+insert into products (name, price) values
+	('Milk', 120),
+	('Bread', 30),
+	('Cocos', 300),
+	('Juice', 20),
+	('Cocao', 140),
+	('Cherry', 30),
+	('Pear', 60)
+;
+insert into shoppers_products (shopper_id, product_id) values
+	(1,1),
+	(1,2),
+	(1,4),
+	(1,5),
+	(1,6),
+	(2,3),
+	(2,6),
+	(2,5),
+	(3,1),
+	(4,5),
+	(4,3),
+	(5,2)
+;
+
+	
